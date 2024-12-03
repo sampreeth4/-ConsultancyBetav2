@@ -1,0 +1,51 @@
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #000428, #004e92);
+    height: 300px;
+    position: relative;
+  }
+  
+  .carousel-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 80%;
+  }
+  
+  .carousel-quote-box {
+    background: #ffd700;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .quote {
+    font-size: 1.5em;
+    margin: 0;
+  }
+  
+  .source {
+    font-size: 0.9em;
+    margin-top: 10px;
+  }
+  
+  .carousel-arrow {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2em;
+    cursor: pointer;
+    padding: 10px;
+  }
+  
+  .carousel-arrow:focus {
+    outline: none;
+  }
+  
+  .carousel-arrow:hover {
+    color: #ffd700;
+  }
+  
