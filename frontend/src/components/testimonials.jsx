@@ -12,7 +12,7 @@ const Testimonials = () => {
     },
     {
       quote: "Success usually comes to those who are too busy to be looking for it.",
-      source: "Henry David Thoreau",
+      source: "Henry David",
       link: "https://example.com/success",
     },
     {
