@@ -10,11 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "lucide-react": "^0.462.0",
-=======
     "lucide-react": "^0.464.0",
->>>>>>> 8a747aa86ddc163d3904b6b48e046139a53c436e
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
