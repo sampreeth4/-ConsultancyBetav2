@@ -3,7 +3,7 @@ import { CircleArrowRight, Users, CodeXml, Globe, ChartLine } from 'lucide-react
 
 const AboutUs = () => {
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center m-28">
       <div className="flex flex-col w-full max-w-4xl">
         <div className="flex items-center mb-8">
           <div className="mr-2 size-7 translate-y-[4px]">
