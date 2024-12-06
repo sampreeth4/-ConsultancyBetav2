@@ -11,7 +11,7 @@ const Nav = () => {
         </div> */}
         <div className="text-3xl  text-orange-500">
           {/* Company Name */}
-          Smart Line Services
+          Smart Line Systems
         </div>
       </div>
 
@@ -19,13 +19,13 @@ const Nav = () => {
       <div className="flex space-x-4">
         <div>
           {/* Contact Us Button */}
-          <button className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <button className="bg-orange-500 hover:bg-white hover:text-orange-500 text-white font-bold py-2 px-4 rounded">
             Contact Us
           </button>
         </div>
         <div>
           {/* Services Button */}
-          <button className="bg-black hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+          <button className="bg-orange-500 hover:bg-white hover:text-orange-500 text-white font-bold py-2 px-4 rounded">
             Services
           </button>
         </div>
