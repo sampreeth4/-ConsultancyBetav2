@@ -22,7 +22,7 @@ function Services() {
               {services.map((service, index) => (
                 <div key={index} className="flex flex-col items-center">
                   <div className="mb-4 bg-orange-100 p-4 rounded-full">
-                    <service.icon size={48} className="text-orange-500" />
+                    <service.icon size={48} className="text-red-500" />
                   </div>
                   <p className="text-lg font-medium text-gray-700">{service.title}</p>
                 </div>
