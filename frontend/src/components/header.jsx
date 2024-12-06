@@ -22,7 +22,7 @@ const Header = () => {
           variants={headerVariants}
           transition={{ duration: 0.8 }}
         >
-          Smart Line Systems
+          SmartLine Systems
         </motion.h1>
 
         <motion.h2

@@ -11,7 +11,7 @@ const Nav = () => {
         </div> */}
         <div className="text-3xl  text-orange-500">
           {/* Company Name */}
-          Smart Line Systems
+          SmartLine Systems
         </div>
       </div>
 
