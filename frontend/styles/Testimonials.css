@@ -1,51 +1,65 @@
 .carousel-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(to right, #000428, #004e92);
-    height: 300px;
-    position: relative;
-  }
-  
-  .carousel-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 80%;
-  }
-  
-  .carousel-quote-box {
-    background: #ffd700;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .quote {
-    font-size: 1.5em;
-    margin: 0;
-  }
-  
-  .source {
-    font-size: 0.9em;
-    margin-top: 10px;
-  }
-  
-  .carousel-arrow {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 2em;
-    cursor: pointer;
-    padding: 10px;
-  }
-  
-  .carousel-arrow:focus {
-    outline: none;
-  }
-  
-  .carousel-arrow:hover {
-    color: #ffd700;
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #ff7e5f, #feb47b); /* Orange gradient */
+  height: 500px; /* Increased height */
+  position: relative;
+  padding: 20px;
+}
+
+.carousel-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 80%;
+}
+
+.carousel-quote-box {
+  background: #fff5e1; /* Softer, warm background for the box */
+  color: #333; /* Dark text for better readability */
+  padding: 30px;
+  border-radius: 15px; /* Rounded corners for a modern look */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow for depth */
+  max-width: 800px; /* Restrict width for better design */
+}
+
+.quote {
+  font-size: 2em; /* Larger font for quotes */
+  font-weight: bold;
+  margin: 0;
+  line-height: 1.5; /* Improved readability */
+}
+
+.source {
+  font-size: 1em;
+  font-style: italic;
+  margin-top: 15px;
+}
+
+.source a {
+  color: #ff7e5f; /* Match link color to the gradient */
+  text-decoration: none;
+}
+
+.source a:hover {
+  text-decoration: underline;
+}
+
+.carousel-arrow {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2.5em; /* Slightly larger arrows */
+  cursor: pointer;
+  padding: 15px;
+}
+
+.carousel-arrow:focus {
+  outline: none;
+}
+
+.carousel-arrow:hover {
+  color: #ffd700; /* Golden color for hover effect */
+}
