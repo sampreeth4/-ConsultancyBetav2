@@ -57,7 +57,6 @@ const Footer = () => {
       animate={isInView ? "visible" : "hidden"}
       className="bg-white py-16 px-4 md:px-12 relative"
     >
-      {/* Geometric Orange Accent */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-orange-50 transform skew-x-[-15deg] origin-top-right"></div>
 
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
