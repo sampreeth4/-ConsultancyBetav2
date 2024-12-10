@@ -25,6 +25,15 @@ const Header = () => {
           SmartLine Systems
         </motion.h1>
 
+        <motion.p
+          className=" italic font-bold mb-8 max-w-3xl mx-auto leading-tight"
+         initial="hidden"
+          animate="visible"
+          variants={headerVariants}
+          transition={{ duration: 0.8 }}>
+          Innovate Possibilities
+        </motion.p>
+
         <motion.h2
           className="text-4xl md:text-3xl font-bold mb-8 max-w-3xl mx-auto leading-tight"
           initial="hidden"

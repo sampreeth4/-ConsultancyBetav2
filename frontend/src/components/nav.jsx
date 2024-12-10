@@ -1,16 +1,13 @@
 import React from 'react';
 
+
 const Nav = () => {
   return (
-    <nav className="flex justify-between items-center p-4  text-white mx-auto px-96 shadow-lg">
+    <nav className="flex justify-between items-center p-4 text-white mx-auto px-96 shadow-lg">
       {/* Left Side */}
       <div className="flex items-center">
-        {/* <div className="mr-4">
-          
-          <img src="/path/to/logo.png" alt="Logo" className="h-8" />
-        </div> */}
-        <div className="text-3xl  text-orange-500">
-          {/* Company Name */}
+        <div className="text-3xl text-orange-500 ml-4"> 
+       
           SmartLine Systems
         </div>
       </div>
