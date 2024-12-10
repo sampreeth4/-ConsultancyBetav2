@@ -1,19 +1,6 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import back from "../assets/back.jpg";
-import rightImage from "../assets/ani1.png"; 
-
-const BackgroundImage = () => {
-  return (
-    <div className="absolute inset-0">
-      <img
-        src={back}
-        alt="Hero Background"
-        className="w-full h-full object-cover"
-      />
-    </div>
-  );
-};
+import rightImage from "../assets/ani1.jpeg"; 
 
 const Hero = () => {
   const ref = useRef(null);
@@ -24,8 +11,10 @@ const Hero = () => {
 
   return (
     <div className="relative h-screen" ref={ref}>
-      <BackgroundImage />
-      <div className="flex flex-col-reverse md:flex-row items-center justify-evenly h-full bg-black bg-opacity-70 z-10 sm:px-28">
+      {/* Background Element */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-orange-50 transform skew-x-[-15deg] origin-top-right z-0"></div>
+
+      <div className="flex flex-col-reverse md:flex-row items-center justify-evenly h-full bg-white z-10 sm:px-28">
         <motion.div
           className="text-left z-20 space-y-10 w-full md:w-1/2"
           initial={{ x: -150, opacity: 0 }}
