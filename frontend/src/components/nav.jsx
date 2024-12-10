@@ -1,34 +1,123 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
-const Nav = () => {
+  const navItems = [
+    { name: 'About Us', href: '#about' },
+    { name: 'Services', href: '#services' },
+    { name: 'Products', href: '#products' },
+    { name: 'Training', href: '#training' },
+    { name: 'Careers', href: '#careers' },
+    { name: 'Contact', href: '#contact' }
+  ];
+
   return (
-    <nav className="flex justify-between items-center p-4 text-white mx-auto px-96 shadow-lg">
-      {/* Left Side */}
-      <div className="flex items-center">
-        <div className="text-3xl text-orange-500 ml-4"> 
+    <nav className="bg-white shadow-md sticky top-0 z-50">
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
        
-          SmartLine Systems
-        </div>
-      </div>
+        <motion.div 
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-3xl font-bold text-orange-600 tracking-tight"
+        >
+          Smartline Systems
+        </motion.div>
 
-      {/* Right Side */}
-      <div className="flex space-x-4">
-        <div>
-          {/* Contact Us Button */}
-          <button className="bg-orange-500 hover:bg-white hover:text-orange-500 text-white font-bold py-2 px-4 rounded">
-            Contact Us
+        
+        <div className="md:hidden">
+          <button 
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-orange-600 focus:outline-none"
+          >
+            {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
           </button>
         </div>
-        <div>
-          {/* Services Button */}
-          <button className="bg-orange-500 hover:bg-white hover:text-orange-500 text-white font-bold py-2 px-4 rounded">
-            Services
-          </button>
-        </div>
+
+        
+        <motion.div 
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          className="hidden md:flex space-x-6 items-center"
+        >
+          {navItems.map((item, index) => (
+            <a
+              key={index}
+              href={item.href}
+              className="text-gray-700 font-medium 
+              transition-all duration-300 
+              relative 
+              group"
+            >
+              <span className="relative">
+                {item.name}
+                <span 
+                  className="absolute bottom-[-3px] left-0 w-0 h-0.5 
+                  bg-orange-500 
+                  transition-all duration-300 
+                  group-hover:w-full"
+                />
+              </span>
+            </a>
+          ))}
+
+        
+          <a 
+            href="#contact"
+            className="bg-orange-500 text-white px-4 py-2 
+            rounded-lg 
+            hover:bg-orange-600 
+            transition-colors 
+            duration-300 
+            shadow-md 
+            hover:shadow-lg"
+          >
+            Get in Touch
+          </a>
+        </motion.div>
+
+       
+        {isOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute top-full left-0 w-full bg-white shadow-lg md:hidden"
+          >
+            <div className="flex flex-col p-4 space-y-3">
+              {navItems.map((item, index) => (
+                <a
+                  key={index}
+                  href={item.href}
+                  className="text-gray-700 py-2 border-b border-gray-200 
+                  hover:text-orange-600 
+                  transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.name}
+                </a>
+              ))}
+              <a 
+                href="#contact"
+                className="bg-orange-500 text-white px-4 py-2 
+                rounded-lg 
+                text-center 
+                hover:bg-orange-600 
+                transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                Get in Touch
+              </a>
+            </div>
+          </motion.div>
+        )}
       </div>
     </nav>
   );
 };
 
-export default Nav;
+export default Navbar;
