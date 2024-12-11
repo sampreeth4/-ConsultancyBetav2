@@ -5,6 +5,7 @@ import AboutUs from "./components/aboutUs.jsx";
 import Testimonials from "./components/testimonials.jsx";
 import Footer from "./components/footer.jsx";
 import Nav from "./components/nav.jsx";
+import InternsGrid from './components/cards.jsx';
 
 const App = () => {
 
@@ -14,6 +15,7 @@ const App = () => {
       <Header />
       <Services />
       <AboutUs />
+      <InternsGrid/>
       <Testimonials />
       <Footer />
     </div>
