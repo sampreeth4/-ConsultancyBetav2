@@ -1,33 +1,53 @@
-import React from 'react';
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import rightImage from "../assets/ani1.jpeg"; 
 
-const Header = () => {
+const Hero = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, {
+    once: false, 
+    amount: 0.1, 
+  });
+
   return (
-    <header className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 py-16 flex flex-col items-center justify-center text-center text-white px-4 ">
-      <div className="container mx-auto">
-      <h1 className=" md:text-6xl font-bold mb-8 max-w-3xl mx-auto leading-tight">
-          Smart Line Services
-        </h1>
+    <div className="relative h-screen" ref={ref}>
+      {/* Background Element */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-orange-50 transform skew-x-[-15deg] origin-top-right z-0"></div>
 
-        <h1 className="text-4xl md:text-3xl font-bold mb-8 max-w-3xl mx-auto leading-tight">
-          People, Cloud-Based Bookkeeping and Business Management Solutions
-        </h1>
-
-        <div className="flex justify-center space-x-6">
-          <button 
-            className="bg-white text-orange-600 hover:bg-orange-100 font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105 shadow-lg"
-          >
-            Get Started
-          </button>
-          
-          <button 
-            className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-orange-600 font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105"
-          >
-            Learn More
-          </button>
-        </div>
+      <div className="flex flex-col-reverse md:flex-row items-center justify-evenly h-full bg-white z-10 sm:px-28">
+        <motion.div
+          className="text-left z-20 space-y-10 w-full md:w-1/2"
+          initial={{ x: -150, opacity: 0 }}
+          animate={isInView ? { x: 0, opacity: 1 } : {}} 
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        >
+          <div className="space-y-2">
+            <h1 className="text-5xl md:text-7xl font-bold text-orange-500">
+              Smartline Systems
+            </h1>
+            <h2 className="text-2xl md:text-3xl italic">
+              Innovate Possibilities
+            </h2>
+          </div>
+          <p className="text-xl md:text-2xl">
+            People, Cloud-Based Bookkeeping and Business Management Solutions
+          </p>
+          <div className="flex justify-start space-x-4">
+            <button className="bg-orange-500 text-white rounded-full px-8 py-3 hover:bg-orange-600 transition duration-300">Get Started</button>
+            <button className="bg-transparent border-2 border-black text-black rounded-full px-8 py-3 hover:bg-orange-600 hover:text-white hover:border-none transition duration-300">Learn More</button>
+          </div>
+        </motion.div>
+        <motion.div
+          className="md:w-1/2 z-40"
+          initial={{ x: 150, opacity: 0 }}
+          animate={isInView ? { x: 0, opacity: 1 } : {}} 
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        >
+          <img src={rightImage} alt="Right Side Image" className="max-w-full h-auto" />
+        </motion.div>
       </div>
-    </header>
+    </div>
   );
 };
 
-export default Header;
+export default Hero;

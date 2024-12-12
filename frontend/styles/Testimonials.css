@@ -2,8 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to right, #ec5d3a, #feb47b); /* Orange gradient */
-  height: 400px; /* Increased height */
+  background: linear-gradient(to right, #ff7e5f, #feb47b); /* Orange gradient */
+  height: 500px; /* Increased height */
   position: relative;
   padding: 20px;
 }
