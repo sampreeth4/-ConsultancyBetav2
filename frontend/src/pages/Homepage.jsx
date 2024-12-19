@@ -1,16 +1,22 @@
-import Header from '../components/Header'
-import Services from '../components/services'
-import AboutUs from '../components/aboutUs'
+import Hero from '../components/Hero'
+import Services from '../components/Services'
+import SubServices from '../components/SubServices'
+import AboutUs from '../components/AboutUs'
 import Intersngrid from '../components/cards'
-import Testimonials from '../components/testimonials'
+import QuoteCarousel from '../components/Carousel'
+import Tech from '../components/tech'
+import Pricing from '../components/Pricing'
 const Homepage = () => {
   return (
     <div>
-      <Header />
+      <Hero />
       <Services/>
+      <SubServices/>
+      <Tech/>
       <AboutUs/>
+      <Pricing/>
       <Intersngrid/>
-      <Testimonials/>
+      <QuoteCarousel/>
     </div>
   )
 }

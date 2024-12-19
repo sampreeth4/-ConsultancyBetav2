@@ -1,73 +1,72 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { name: 'About Us', href: '/About' },
-    { name: 'Services', href: '#services' },
-    { name: 'Products', href: '#products' },
-    { name: 'Training', href: '#training' },
-    { name: 'Careers', href: '#careers' },
-    { name: 'Contact', href: '#contact' }
+    { name: "About Us", href: "/about" },
+    { name: "Services", href: "/services" },
+    { name: "Products", href: "/products" },
+    { name: "Training", href: "/training" },
+    { name: "Careers", href: "/careers" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-       
-        <motion.div 
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-3xl font-bold text-orange-600 tracking-tight"
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-3xl font-bold text-orange-600 tracking-tight select-none"
         >
-          Smartline Systems
+          <Link to={"/"}> Smartline Systems</Link>
         </motion.div>
 
-        
         <div className="md:hidden">
-          <button 
+          <button
             onClick={() => setIsOpen(!isOpen)}
             className="text-orange-600 focus:outline-none"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
           >
             {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
           </button>
         </div>
 
-        
-        <motion.div 
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
           className="hidden md:flex space-x-6 items-center"
         >
           {navItems.map((item, index) => (
-            <a
+            <Link
               key={index}
-              href={item.href}
+              to={item.href}
               className="text-gray-700 font-medium 
-              transition-all duration-300 
-              relative 
-              group"
+                  transition-all duration-300 
+                  relative
+                  group"
             >
               <span className="relative">
                 {item.name}
-                <span 
+                <span
                   className="absolute bottom-[-3px] left-0 w-0 h-0.5 
                   bg-orange-500 
                   transition-all duration-300 
                   group-hover:w-full"
                 />
               </span>
-            </a>
+            </Link>
           ))}
 
-        
-          <a 
-            href="#contact"
+          <a
+            href="login"
             className="bg-orange-500 text-white px-4 py-2 
             rounded-lg 
             hover:bg-orange-600 
@@ -76,13 +75,12 @@ const Navbar = () => {
             shadow-md 
             hover:shadow-lg"
           >
-            Get in Touch
+            Log in{" "}
           </a>
         </motion.div>
 
-       
         {isOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
@@ -101,8 +99,8 @@ const Navbar = () => {
                   {item.name}
                 </a>
               ))}
-              <a 
-                href="#contact"
+              <a
+                href="login"
                 className="bg-orange-500 text-white px-4 py-2 
                 rounded-lg 
                 text-center 
@@ -110,7 +108,7 @@ const Navbar = () => {
                 transition-colors"
                 onClick={() => setIsOpen(false)}
               >
-                Get in Touch
+                Log in
               </a>
             </div>
           </motion.div>

@@ -1,150 +1,187 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import himanshu from "../assets/himanshu.jpg";
 import akash from "../assets/akash.jpg";
 import sriram from "../assets/sriram.jpg";
 import sampreeth from "../assets/sampreeth.jpg";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const internsData = [
   {
     id: 1,
-    name: 'Himanshu Sharma',
+    name: "Himanshu Sharma",
     image: himanshu,
-    email: 'sharmaslov@gmail.com',
-    phone: '+91 9828477222',
-    resumeLink: '#',
-    role: 'Software Engineering Intern',
-    skills: ['React', 'Node.js', 'Docker']
+    email: "sharmaslov@gmail.com",
+    phone: "+91 9828477222",
+    resumeLink:
+      "https://drive.google.com/file/d/1nT2wOGQjM3qi2eKDnFTBALZiLYE-0ymA/view?usp=sharing",
+    role: "Software Engineering Intern",
+    skills: [
+      "MongoDb",
+      "Express.js",
+      "React",
+      "Node.js",
+      "Tailwind",
+      "Typescript",
+    ],
   },
   {
     id: 2,
-    name: 'Akash',
+    name: "Akash",
     image: akash,
-    email: 'akashsaminathan24@gmail.com',
-    phone: '+91 9840729884',
-    resumeLink: '#',
-    role: 'Frontend Intern',
-    skills: ['Next.js', 'React', 'Tailwind']
+    email: "akashsaminathan24@gmail.com",
+    phone: "+91 9840729884",
+    resumeLink: "#",
+    role: "Frontend Intern",
+    skills: ["Next.js", "React", "Tailwind"],
   },
   {
     id: 3,
-    name: 'Sri Ram',
+    name: "Sri Ram",
     image: sriram,
-    email: 'sriram@company.com',
-    phone: '+91 8765432109',
-    resumeLink: '#',
-    role: 'Marketing Intern',
-    skills: ['Social Media', 'Content', 'Analytics']
+    email: "sriram@company.com",
+    phone: "+91 8765432109",
+    resumeLink: "#",
+    role: "Marketing Intern",
+    skills: ["Social Media", "Content", "Analytics"],
   },
   {
     id: 4,
-    name: 'Sampreeth',
+    name: "Sampreeth",
     image: sampreeth,
-    email: 'sampreeth@company.com',
-    phone: '+91 7654321098',
-    resumeLink: '#',
-    role: 'Backend Developer',
-    skills: ['Python', 'Django', 'PostgreSQL']
-  }
+    email: "sampreeth@company.com",
+    phone: "+91 7654321098",
+    resumeLink: "#",
+    role: "Backend Developer",
+    skills: ["Python", "Django", "PostgreSQL"],
+  },
 ];
 
 const InternCard = ({ intern }) => {
-  const [isFlipped, setIsFlipped] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleLinkClick = (e, link) => {
+    e.stopPropagation();
+    if (link && link !== "#") {
+      window.open(link, "_blank", "noopener,noreferrer");
+    }
+  };
 
   return (
-    <div 
-      className="relative w-72 h-96 perspective-custom group"
-      onMouseEnter={() => setIsFlipped(true)}
-      onMouseLeave={() => setIsFlipped(false)}
+    <div
+      className="relative w-72 h-96 group overflow-hidden rounded-2xl shadow-xl border-2 border-white/30 
+      transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      <div 
-        className={`
-          relative w-full h-full transition-transform duration-700 
-          transform-3d ${isFlipped ? 'rotate-y-180' : ''}
-        `}
+      <div
+        className="absolute inset-0 bg-cover bg-center transition-all duration-500 ease-in-out"
         style={{
-          transformStyle: 'preserve-3d',
-          backfaceVisibility: 'hidden'
+          backgroundImage: `url(${intern.image})`,
+          transform: isHovered ? "scale(1.1)" : "scale(1)",
+          filter: isHovered ? "brightness(0.3)" : "brightness(1)",
+          backgroundBlendMode: "multiply",
         }}
-      >
-        <div 
-          className="
-            absolute w-full h-full rounded-2xl shadow-2xl overflow-hidden
-            bg-gradient-to-br from-orange-100 to-orange-200 
-            transform-3d backface-hidden
-          "
-          style={{
-            backfaceVisibility: 'hidden'
-          }}
+      />
+
+      <div className="relative z-10 w-full h-full flex flex-col justify-end p-6 text-white">
+        <div
+          className="absolute bottom-0 left-0 right-0 p-6 
+          bg-gradient-to-t from-black/70 to-transparent
+          transition-all duration-500 ease-in-out"
         >
-          <div className="absolute inset-0 bg-black opacity-20"></div>
-          <img 
-            src={intern.image} 
-            alt={intern.name} 
-            className="w-full h-full object-cover filter brightness-90"
-          />
-          <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white p-4">
-            <h3 className="text-xl font-bold tracking-wider">{intern.name}</h3>
-            <p className="text-sm text-orange-200">{intern.role}</p>
-          </div>
+          <h3 className="text-2xl font-bold mb-1 text-white">{intern.name}</h3>
+          <p className="text-sm opacity-80 text-gray-200">{intern.role}</p>
         </div>
 
-        <div 
+        <div
           className={`
-            absolute w-full h-full bg-gradient-to-br from-orange-200 to-orange-300 
-            rounded-2xl shadow-2xl p-6 flex flex-col justify-center items-center 
-            transform-3d rotate-y-180 backface-hidden
-            ${isFlipped ? 'visible' : 'invisible'}
+            absolute inset-0 bg-black/80 
+            p-6 flex flex-col justify-center 
+            transform transition-transform duration-500 ease-in-out
+            ${
+              isHovered
+                ? "translate-y-0 opacity-100"
+                : "translate-y-full opacity-0"
+            }
           `}
-          style={{
-            backfaceVisibility: 'hidden'
-          }}
         >
-          <div className="text-center space-y-4">
-            <h3 className="text-2xl font-bold text-orange-900">{intern.name}</h3>
-            
-            <div className="space-y-2">
-              <div className="flex items-center justify-center text-orange-800">
-                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+          <div className="space-y-4 text-center">
+            <div className="space-y-3">
+              <div className="flex items-center justify-center">
+                <svg
+                  className="w-5 h-5 mr-2 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
                   <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                   <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                 </svg>
-                {intern.email}
-              </div>
-              
-              <div className="flex items-center justify-center text-orange-800">
-                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.61 18 2 12.39 2 6V3z" />
-                </svg>
-                {intern.phone}
+                <a
+                  href={`mailto:${intern.email}`}
+                  onClick={(e) => handleLinkClick(e, `mailto:${intern.email}`)}
+                  className="hover:underline text-gray-200 hover:text-white"
+                >
+                  {intern.email}
+                </a>
               </div>
 
-              <div className="flex flex-wrap justify-center gap-2 mt-3">
-                {intern.skills.map((skill, index) => (
-                  <span 
-                    key={index} 
-                    className="
-                      bg-orange-500 text-white text-xs px-2 py-1 
-                      rounded-full
-                    "
-                  >
-                    {skill}
-                  </span>
-                ))}
+              <div className="flex items-center justify-center">
+                <svg
+                  className="w-5 h-5 mr-2 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.61 18 2 12.39 2 6V3z" />
+                </svg>
+                <a
+                  href={`tel:${intern.phone}`}
+                  onClick={(e) => handleLinkClick(e, `tel:${intern.phone}`)}
+                  className="hover:underline text-gray-200 hover:text-white"
+                >
+                  {intern.phone}
+                </a>
               </div>
             </div>
-            
-            <div className="flex space-x-4 justify-center mt-4">
-              <a 
-                href={intern.resumeLink} 
-                target="_blank" 
+
+            <div className="flex flex-wrap justify-center gap-2 mt-4">
+              {intern.skills.map((skill, index) => (
+                <span
+                  key={index}
+                  className="
+                    bg-white/20 text-white text-xs px-3 py-1 
+                    rounded-full 
+                    hover:bg-white/30 transition-all duration-300
+                  "
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+
+            <div className="mt-6">
+              <a
+                href={intern.resumeLink}
+                onClick={(e) => handleLinkClick(e, intern.resumeLink)}
+                target="_blank"
                 rel="noopener noreferrer"
-                className="
-                  bg-orange-600 text-white px-6 py-2 rounded-md 
-                  hover:bg-orange-700 transition duration-300
-                  shadow-md hover:shadow-lg
-                "
+                className={`
+                  inline-block px-8 py-3 
+                  bg-white text-black 
+                  font-semibold 
+                  rounded-full shadow-lg
+                  hover:bg-gray-100
+                  transition-all duration-300 transform hover:scale-105
+                  ${
+                    !intern.resumeLink || intern.resumeLink === "#"
+                      ? "opacity-50 pointer-events-none"
+                      : ""
+                  }
+                `}
               >
-                View Resume
+                {intern.resumeLink && intern.resumeLink !== "#"
+                  ? "View Resume"
+                  : "Resume Unavailable"}
               </a>
             </div>
           </div>
@@ -155,21 +192,36 @@ const InternCard = ({ intern }) => {
 };
 
 const InternsGrid = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref);
   return (
-    <div className="bg-gradient-to-br from-orange-50 to-orange-100 py-16">
-      <div className="container mx-auto px-4">
+    <div ref={ref} className="py-16 relative overflow-hidden bg-orange-50/30">
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-orange-50 transform skew-x-[-15deg] origin-top-right z-0"></div>
+      <div className="absolute bottom-0 left-0 w-1/4 h-full bg-orange-50/30 transform skew-x-[15deg] origin-bottom-left z-0"></div>
+
+      <motion.div
+        className="container mx-auto px-4 relative z-10"
+        initial={{ y: 100, opacity: 0 }}
+        animate={isInView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
         <h2 className="text-4xl font-bold text-center text-orange-900 mb-16 tracking-wider">
           Our Talented Interns
         </h2>
-        <div className="
+        <motion.div
+          className="
           grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 
           gap-8 justify-center items-center
-        ">
-          {internsData.map(intern => (
+        "
+          initial={{ y: 100, opacity: 0 }}
+          animate={isInView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          {internsData.map((intern) => (
             <InternCard key={intern.id} intern={intern} />
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };

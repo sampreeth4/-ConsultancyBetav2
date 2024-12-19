@@ -1,122 +1,109 @@
-import React, { useState } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import React from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const AboutUs = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { 
-    amount: 0.2,
-  });
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 50,
-      scale: 0.9
-    },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100
-      }
-    }
-  };
+  const isInView = useInView(ref);
 
   return (
     <div className="relative overflow-hidden">
-      <div 
-        className="absolute top-0 right-0 w-1/3 h-full bg-orange-50 transform skew-x-[-15deg] origin-top-right z-0"
-      ></div>
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-orange-50 transform skew-x-[-15deg] origin-top-right z-0"></div>
+      <div className="absolute bottom-0 left-0 w-1/4 h-full bg-orange-50/30 transform skew-x-[15deg] origin-bottom-left z-0"></div>
 
-      <motion.div 
-        ref={ref}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        variants={containerVariants}
-        className="relative bg-transparent py-16 px-4 overflow-hidden z-10"
-      >
-        <div className="max-w-6xl mx-auto relative z-20">
-          <motion.div 
-            variants={itemVariants}
-            className="text-center mb-12"
-          >
-            <h2 className="text-4xl font-bold text-orange-800 mb-4 relative">
+      <div ref={ref} className="relative py-24 px-6 overflow-hidden z-10">
+        <motion.div
+          initial={{ y: 100, opacity: 0 }}
+          animate={isInView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="max-w-6xl mx-auto relative z-20"
+        >
+          <div className="text-center mb-16">
+            <h2 className="text-5xl font-extrabold text-orange-800 mb-4 relative">
               About Us
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-orange-300/60 rounded-full"></div>
             </h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div 
-              variants={itemVariants}
-              className="bg-white rounded-2xl shadow-2xl p-8 border-2 border-orange-100 hover:border-orange-200 transition-all duration-300 group relative z-30"
-            >
-              <motion.h3 
-                variants={itemVariants}
-                className="text-2xl font-semibold text-orange-700 mb-4"
-              >
-                Our Vision
-              </motion.h3>
-              <motion.p 
-                variants={itemVariants}
-                className="text-gray-700 leading-relaxed"
-              >
-                Smartline Systems Pvt. Ltd. is an innovative tech startup at the forefront of Cloud Computing and Artificial Intelligence (AI), dedicated to delivering cutting-edge solutions that empower businesses to achieve unparalleled success in today's competitive landscape.
-              </motion.p>
-            </motion.div>
-
-            <motion.div 
-              variants={itemVariants}
-              className="bg-white rounded-2xl shadow-2xl p-8 border-2 border-orange-100 hover:border-orange-200 transition-all duration-300 group relative z-30"
-            >
-              <motion.h3 
-                variants={itemVariants}
-                className="text-2xl font-semibold text-orange-700 mb-4"
-              >
-                Our Journey
-              </motion.h3>
-              <motion.p 
-                variants={itemVariants}
-                className="text-gray-700 leading-relaxed"
-              >
-                Founded by a team of passionate tech enthusiasts, the company initially focused on product development and quickly evolved into a dynamic force in the tech industry.
-              </motion.p>
-            </motion.div>
           </div>
 
-          <motion.div 
-            variants={itemVariants}
-            className="mt-12 bg-white rounded-2xl shadow-2xl p-8 border-2 border-orange-100 hover:border-orange-200 transition-all duration-300 group relative z-30"
+          <div className="grid md:grid-cols-2 gap-8 items-center mb-8">
+            <div
+              className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl 
+                            border border-orange-100/50 hover:border-orange-300/50
+                            transition-all duration-300 hover:shadow-2xl hover:translate-y-[-4px] group"
+            >
+              <div
+                className="absolute top-0 right-0 w-32 h-32 bg-orange-100/20 rounded-full 
+                                transform translate-x-12 -translate-y-12 group-hover:scale-110 transition-transform duration-300"
+              ></div>
+              <h3 className="text-2xl font-bold text-orange-700 mb-6 relative inline-block">
+                Our Vision
+                <div
+                  className="absolute bottom-[-4px] left-0 w-16 h-0.5 bg-orange-300/60 
+                                    rounded-full transform origin-left scale-x-0 group-hover:scale-x-100 
+                                    transition-transform duration-300"
+                ></div>
+              </h3>
+              <p className="text-gray-700 leading-relaxed font-medium">
+                Smartline Systems Pvt. Ltd. is an innovative tech startup at the
+                forefront of Cloud Computing and Artificial Intelligence (AI),
+                dedicated to delivering cutting-edge solutions that empower
+                businesses to achieve unparalleled success in today's
+                competitive landscape.
+              </p>
+            </div>
+
+            <div
+              className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl 
+                            border border-orange-100/50 hover:border-orange-300/50
+                            transition-all duration-300 hover:shadow-2xl hover:translate-y-[-4px] group"
+            >
+              <div
+                className="absolute top-0 right-0 w-32 h-32 bg-orange-100/20 rounded-full 
+                                transform translate-x-12 -translate-y-12 group-hover:scale-110 transition-transform duration-300"
+              ></div>
+              <h3 className="text-2xl font-bold text-orange-700 mb-6 relative inline-block">
+                Our Journey
+                <div
+                  className="absolute bottom-[-4px] left-0 w-16 h-0.5 bg-orange-300/60 
+                                    rounded-full transform origin-left scale-x-0 group-hover:scale-x-100 
+                                    transition-transform duration-300"
+                ></div>
+              </h3>
+              <p className="text-gray-700 leading-relaxed font-medium">
+                Founded by a team of passionate tech enthusiasts, the company
+                initially focused on product development and quickly evolved
+                into a dynamic force in the tech industry.
+              </p>
+            </div>
+          </div>
+
+          <div
+            className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl 
+                        border border-orange-100/50 hover:border-orange-300/50 max-w-4xl mx-auto
+                        transition-all duration-300 hover:shadow-2xl hover:translate-y-[-4px] group"
           >
-            <motion.h3 
-              variants={itemVariants}
-              className="text-2xl font-semibold text-orange-700 mb-4 text-center"
-            >
+            <div
+              className="absolute top-0 right-0 w-32 h-32 bg-orange-100/20 rounded-full 
+                            transform translate-x-12 -translate-y-12 group-hover:scale-110 transition-transform duration-300"
+            ></div>
+            <h3 className="text-2xl font-bold text-orange-700 mb-6 text-center relative">
               Our Commitment
-            </motion.h3>
-            <motion.p 
-              variants={itemVariants}
-              className="text-gray-700 leading-relaxed text-center"
-            >
-              In addition to its core offerings, Smartline Systems specializes in providing comprehensive training and consulting services, ensuring both employees and clients are equipped with the knowledge and skills to navigate the ever-evolving technological landscape.
-            </motion.p>
-          </motion.div>
-        </div>
-      </motion.div>
+              <div
+                className="absolute bottom-[-4px] left-1/2 transform -translate-x-1/2 w-16 h-0.5 
+                                bg-orange-300/60 rounded-full scale-x-0 group-hover:scale-x-100 
+                                transition-transform duration-300"
+              ></div>
+            </h3>
+            <p className="text-gray-700 leading-relaxed font-medium text-center">
+              In addition to its core offerings, Smartline Systems specializes
+              in providing comprehensive training and consulting services,
+              ensuring both employees and clients are equipped with the
+              knowledge and skills to navigate the ever-evolving technological
+              landscape.
+            </p>
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 };

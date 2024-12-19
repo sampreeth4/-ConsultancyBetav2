@@ -65,7 +65,8 @@ const Footer = () => {
             Smartline Systems
           </h3>
           <p className="text-gray-600 font-medium leading-relaxed">
-            Transforming businesses through innovative consulting and strategic solutions.
+            Transforming businesses through innovative consulting and strategic
+            solutions.
           </p>
         </motion.div>
 
@@ -114,16 +115,18 @@ const Footer = () => {
             Connect With Us
           </h4>
           <div className="flex space-x-5">
-            {[FaFacebook, FaTwitter, FaLinkedin, FaInstagram].map((Icon, index) => (
-              <motion.a
-                key={index}
-                href="#"
-                variants={itemVariants}
-                className="text-gray-600 transition-all duration-300 hover:text-orange-600 hover:scale-110"
-              >
-                <Icon size={24} />
-              </motion.a>
-            ))}
+            {[FaFacebook, FaTwitter, FaLinkedin, FaInstagram].map(
+              (Icon, index) => (
+                <motion.a
+                  key={index}
+                  href="#"
+                  variants={itemVariants}
+                  className="text-gray-600 transition-all duration-300 hover:text-orange-600 hover:scale-110"
+                >
+                  <Icon size={24} />
+                </motion.a>
+              )
+            )}
           </div>
         </motion.div>
       </div>
