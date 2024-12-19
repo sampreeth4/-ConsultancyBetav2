@@ -1,24 +1,19 @@
-import React from 'react';
-import Header from "./components/header.jsx";
-import Services from "./components/services.jsx";
-import AboutUs from "./components/aboutUs.jsx";
-import Testimonials from "./components/testimonials.jsx";
-import Footer from "./components/footer.jsx";
-import Nav from "./components/nav.jsx";
-import InternsGrid from './components/cards.jsx';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+} from "react-router-dom";
+import Layout from "./layout/Layout";
+import Homepage from "./pages/Homepage";
 
 const App = () => {
 
   return (
-    <div>
-      <Nav />
-      <Header />
-      <Services />
-      <AboutUs />
-      <InternsGrid/>
-      <Testimonials />
-      <Footer />
-    </div>
+    <Router>
+    <Routes>
+      <Route path="/" element={<Layout><Homepage /></Layout>} />
+    </Routes>
+  </Router>
   );
 };
 
