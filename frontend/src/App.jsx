@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import Layout from "./layout/Layout";
 import Homepage from "./pages/Homepage";
+import Contactpage from "./pages/Contactpage";
 
 const App = () => {
 
@@ -12,6 +13,7 @@ const App = () => {
     <Router>
     <Routes>
       <Route path="/" element={<Layout><Homepage /></Layout>} />
+      <Route path="/contact" element={<Layout><Contactpage/></Layout>} />
     </Routes>
   </Router>
   );
