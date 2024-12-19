@@ -25,7 +25,7 @@ const Tech = () => {
       <motion.div
         initial={{ y: 100, opacity: 0 }}
         animate={isInView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        transition={{ duration: 1, ease: "easeOut" }}
         className="container mx-auto px-6 relative z-10"
       >
         <div className="grid md:grid-cols-2 gap-12 items-center">

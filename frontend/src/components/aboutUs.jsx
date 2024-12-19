@@ -15,7 +15,7 @@ const AboutUs = () => {
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={isInView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 1, ease: "easeOut" }}
           className="max-w-6xl mx-auto relative z-20"
         >
           <div className="text-center mb-16">

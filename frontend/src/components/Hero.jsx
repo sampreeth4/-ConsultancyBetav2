@@ -17,7 +17,7 @@ const Hero = () => {
           className="text-left z-20 space-y-10 w-full md:w-1/2"
           initial={{ y: 150, opacity: 0 }}
           animate={isInView ? { y: 0, opacity: 1 } : {}}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 1, ease: "easeOut" }}
         >
           <div className="space-y-2">
             <h1 className="text-5xl md:text-7xl font-bold text-orange-500">
@@ -43,7 +43,7 @@ const Hero = () => {
           className="md:w-1/2 z-40"
           initial={{ y: 150, opacity: 0 }}
           animate={isInView ? { y: 0, opacity: 1 } : {}}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 1, ease: "easeOut" }}
         >
           <img
             src={rightImage}

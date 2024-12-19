@@ -80,7 +80,7 @@ const PricingSection = () => {
         bg-clip-text text-transparent bg-gradient-to-r from-white to-orange-100"
           initial={{ y: 100, opacity: 0 }}
           animate={isInView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 1, ease: "easeOut" }}
         >
           Our Service Packages
         </motion.h2>
@@ -89,7 +89,7 @@ const PricingSection = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
           initial={{ y: 100, opacity: 0 }}
           animate={isInView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 1, ease: "easeOut" }}
         >
           {pricingOptions.map((option) => (
             <div
