@@ -6,6 +6,7 @@ import {
 import Layout from "./layout/Layout";
 import Homepage from "./pages/Homepage";
 import Contactpage from "./pages/Contactpage";
+import CareersPage from "./pages/CareerPage";
 
 const App = () => {
 
@@ -14,6 +15,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Layout><Homepage /></Layout>} />
       <Route path="/contact" element={<Layout><Contactpage/></Layout>} />
+      <Route path="/careers" element={<Layout><CareersPage /></Layout>} />
     </Routes>
   </Router>
   );
