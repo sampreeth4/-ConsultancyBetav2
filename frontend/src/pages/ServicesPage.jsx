@@ -106,7 +106,7 @@ const Services = () => {
 
       {/* Service Benefits Section */}
       <motion.section 
-        className="py-16 bg-white"
+        className="py-16 bg-white pl-4"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -153,7 +153,7 @@ const Services = () => {
               className="overflow-hidden shadow-xl"
             >
               <img 
-                src={tech} 
+                src={tech}
                 alt="Advanced technology visualization" 
                 className="w-full h-full object-cover"
               />
@@ -212,4 +212,6 @@ const Services = () => {
 }
 
 export default Services
+
+
 
