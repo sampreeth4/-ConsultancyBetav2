@@ -4,7 +4,7 @@ import React from 'react';
 import { motion, useAnimation, useScroll, useTransform } from 'framer-motion';
 import { Lightbulb, Target, Users, Zap, ArrowRight } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
-import Intersngrid from '../components/cards'
+import Intersngrid from '../components/cards';
 
 const FadeInWhenVisible = ({ children }) => {
   const controls = useAnimation();
@@ -34,6 +34,13 @@ const FadeInWhenVisible = ({ children }) => {
     </motion.div>
   );
 };
+
+const FeatureCard = ({ title, description }) => (
+  <div className="bg-white rounded-lg shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-l-4 border-orange-500">
+    <h3 className="text-xl font-semibold mb-2 text-gray-800">{title}</h3>
+    <p className="text-gray-600">{description}</p>
+  </div>
+);
 
 const CoreValue = ({ icon: Icon, title, description }) => {
   return (
@@ -92,29 +99,54 @@ export default function AboutUs() {
         </div>
       </motion.section>
 
-      {/* Intro Section */}
-      <section className="py-20 w-screen bg-orange-50">
-        <div className="container mx-auto px-4">
+      {/* Who We Are Section */}
+      <section className="relative py-20 overflow-hidden bg-gradient-to-bl from-orange-100 to-orange-200">
+        <div className="absolute inset-0 bg-white transform -skew-y-3 origin-top-right z-0"></div>
+        <div className="relative z-10 container mx-auto px-4">
           <FadeInWhenVisible>
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
+            <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-gray-800">
               Who We Are
             </h2>
           </FadeInWhenVisible>
           <FadeInWhenVisible>
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto text-center">
-            Smartline Systems Pvt. Ltd. is an innovative tech startup at the forefront of Cloud Computing and Artificial Intelligence (AI), dedicated to delivering cutting-edge solutions that empower businesses to achieve unparalleled success in today's competitive landscape. With a deep commitment to excellence, Smartline Systems stands as a beacon of professionalism and expertise across all functions. <br /> <br />
-
-Founded by a team of passionate tech enthusiasts, the company initially focused on product development and quickly evolved into a dynamic force in the tech industry. Smartline Systems offers a unique platform for career growth, fostering a customer-centric and employee-focused environment that equips its team with the latest technological tools and resources. This nurturing atmosphere promotes a culture of passion, creativity, and dedication.
-<br /> <br />
-In addition to its core offerings, Smartline Systems specializes in providing comprehensive training and consulting services, ensuring both employees and clients are equipped with the knowledge and skills to navigate the ever-evolving technological landscape. Our unwavering commitment to excellence drives us to continually push boundaries and deliver innovative solutions that meet the evolving needs of our customers.
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto text-center mb-16">
+              Smartline Systems is an innovative tech startup specializing in Cloud Computing and AI. 
+              We empower businesses with cutting-edge solutions, fostering growth and excellence.
             </p>
           </FadeInWhenVisible>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <FadeInWhenVisible>
+              <FeatureCard 
+                title="Cloud Expertise"
+                description="We deliver advanced cloud solutions to optimize your business operations, ensuring scalability and efficiency in the digital landscape."
+              />
+            </FadeInWhenVisible>
+            <FadeInWhenVisible>
+              <FeatureCard 
+                title="AI Innovation"
+                description="Our AI-driven approaches harness the power of machine learning and data analytics to drive intelligent decision-making and automation."
+              />
+            </FadeInWhenVisible>
+            <FadeInWhenVisible>
+              <FeatureCard 
+                title="Customer Focus"
+                description="We prioritize client success through tailored, innovative solutions that address unique challenges and drive business growth."
+              />
+            </FadeInWhenVisible>
+            <FadeInWhenVisible>
+              <FeatureCard 
+                title="Continuous Growth"
+                description="Our culture fosters continuous learning, creativity, and excellence, ensuring we stay at the forefront of technological advancements."
+              />
+            </FadeInWhenVisible>
+          </div>
         </div>
       </section>
 
       {/* Core Values Section */}
-      <section className="py-20 w-screen bg-white">
-        <div className="container mx-auto px-4">
+      <section className="relative py-20 w-screen bg-gradient-to-tl from-orange-200 to-orange-300">
+        <div className="absolute inset-0 bg-white transform skew-y-3 origin-top-left z-0"></div>
+        <div className="relative z-10 container mx-auto px-4">
           <FadeInWhenVisible>
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
               Our Core Values
@@ -146,8 +178,9 @@ In addition to its core offerings, Smartline Systems specializes in providing co
       </section>
 
       {/* Our Approach Section */}
-      <section className="py-20 w-screen bg-orange-200">
-        <div className="container mx-auto px-4">
+      <section className="relative py-20 w-screen bg-gradient-to-br from-orange-300 to-orange-400">
+        <div className="absolute inset-0 bg-white transform skew-y-3 origin-bottom-right z-0"></div>
+        <div className="relative z-10 container mx-auto px-4">
           <FadeInWhenVisible>
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
               Our Approach
@@ -195,6 +228,8 @@ In addition to its core offerings, Smartline Systems specializes in providing co
           </FadeInWhenVisible>
         </div>
       </section>
+
+      {/* Interns Grid Section */}
       <Intersngrid />
     </div>
   );
