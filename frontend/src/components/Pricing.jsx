@@ -70,7 +70,7 @@ const PricingSection = () => {
   return (
     <div
       ref={ref}
-      className="bg-gradient-to-tr from-orange-400 via-orange-500 to-orange-400 overflow-hidden relative py-16 px-4"
+      className="bg-gradient-to-tr from-orange-400 via-orange-500 to-orange-400 overflow-hidden relative py-16 px-4 w-screen"
     >
       <div className="absolute top-0 right-0 w-1/3 h-full bg-white/5 transform skew-x-[-15deg] origin-top-right"></div>
       <div className="absolute bottom-0 left-0 w-1/4 h-full bg-black/5 transform skew-x-[15deg] origin-bottom-left"></div>
