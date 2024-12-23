@@ -162,7 +162,7 @@ function Training() {
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             >
               Now, experience & learn the beauty of future technology in your own
-              native languages using CyberDude training.
+              native languages
             </motion.p>
             <motion.div
               className="mt-8 cursor-pointer"
