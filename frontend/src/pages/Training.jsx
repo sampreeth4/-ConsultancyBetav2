@@ -1,4 +1,4 @@
-import PricingSection from "../components/Pricing";
+import { FaqItem } from '../components/faq-items';
 import { BookA, Monitor, BarChartIcon as ChartNoAxesCombined, ChevronDown } from 'lucide-react';
 import { motion, useAnimation, useScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -322,7 +322,45 @@ function Training() {
 </section>
 {/*LEARNING TRACKS */}
 
-      <PricingSection />
+<section className="py-16 px-4">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Frequently Asked Questions
+          </h2>
+          <div className="w-24 h-1 bg-orange-500 mx-auto"></div>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-12">
+          <FaqItem
+            letter="A"
+            question="Is the course absolutely Free?"
+            answer="We think, quality education should be provided free. We upload quality materials for students who are passionate to learn new things. However, we have special meetup workshops going on, which will driven us in providing great content."
+          />
+          
+          <FaqItem
+            letter="B"
+            question="Can i download the Video Materials?"
+            answer="Yes, ofcourse! We love sharing. Our material is brought to you free and anyone can learn/distribute the materials. We glad to receive reviews of our courses."
+          />
+          
+          <FaqItem
+            letter="C"
+            question="What Languages in these courses?"
+            answer="We currently, decided to teach technology in Tamil, Telugu first. However, we can expect courses in Malayalam, Kannada & Hindi Languages as well."
+          />
+          
+          <FaqItem
+            letter="D"
+            question="Available for Meetup Workshop?"
+            answer="Yes, We love to teach students and help them innovating their ideas and guiding them reach high goals. We love to do that, "
+            contactLink="contact us anytime"
+          />
+        </div>
+      </div>
+    </section>
+
+
     </>
   );
 }
