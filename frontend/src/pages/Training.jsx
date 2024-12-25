@@ -125,14 +125,13 @@ const buttonHover = {
   transition: { duration: 0.3 },
 };
 
-
 function Training() {
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.97]);
 
   return (
-    <>
+    <div className="w-screen overflow-x-hidden">
       <motion.section
         className="relative bg-cover bg-center h-screen"
         style={{
@@ -185,8 +184,8 @@ function Training() {
         </div>
       </motion.section>
 
-{/* Feature Section */}
-<section className="py-16 px-4 bg-white">
+      {/* Feature Section */}
+      <section className="py-16 px-4 bg-white">
         <h2 className="text-3xl font-bold text-center mb-6">
           This Is What We Offer You
         </h2>
@@ -277,93 +276,87 @@ function Training() {
         </div>
       </section>
 
-{/*LEARNING TRACKS */}
+      {/* LEARNING TRACKS */}
       <section className="bg-white py-16">
-  <div className="max-w-7xl mx-auto px-4">
-    <h2 className="text-3xl font-bold text-center mb-4">Learning Tracks</h2>
-    <div className="w-16 h-1 bg-orange-500 mx-auto mb-8"></div>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      {tracks.map((track, index) => (
-        <motion.div
-          key={index}
-          className="flex flex-col items-center text-center bg-white shadow-lg rounded-lg p-6 hover:scale-105 transition-transform duration-300"
-          variants={cardVariants}
-          whileHover="hover"
-        >
-          <span className="text-orange-500 font-bold text-lg mb-2">
-            {track.duration}
-          </span>
-          <h3 className="text-xl font-semibold mb-2">{track.title}</h3>
-          <p className="text-gray-600 mb-4">{track.description}</p>
-          <motion.button
-            className="px-6 py-2 bg-orange-500 text-white font-semibold rounded-full hover:bg-orange-600 transition-colors duration-300"
-            whileHover={buttonHover}
-          >
-            EXPLORE
-          </motion.button>
-        </motion.div>
-      ))}
-    </div>
-    <div className="flex justify-center mt-8 gap-4">
-      <motion.button
-        className="px-6 py-3 bg-orange-500 text-white font-semibold rounded-full hover:bg-orange-600 transition-colors duration-300"
-        whileHover={buttonHover}
-      >
-        START YOUR FREE TRIAL
-      </motion.button>
-      <motion.button
-        className="px-6 py-3 bg-white text-orange-500 font-semibold border border-orange-500 rounded-full hover:bg-orange-500 hover:text-white transition-colors duration-300"
-        whileHover={buttonHover}
-      >
-        EXPLORE MORE COURSES
-      </motion.button>
-    </div>
-  </div>
-</section>
-{/*LEARNING TRACKS */}
-
-<section className="py-16 px-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Frequently Asked Questions
-          </h2>
-          <div className="w-24 h-1 bg-orange-500 mx-auto"></div>
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-4">Learning Tracks</h2>
+          <div className="w-16 h-1 bg-orange-500 mx-auto mb-8"></div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {tracks.map((track, index) => (
+              <motion.div
+                key={index}
+                className="flex flex-col items-center text-center bg-white shadow-lg rounded-lg p-6 hover:scale-105 transition-transform duration-300"
+                variants={cardVariants}
+                whileHover="hover"
+              >
+                <span className="text-orange-500 font-bold text-lg mb-2">
+                  {track.duration}
+                </span>
+                <h3 className="text-xl font-semibold mb-2">{track.title}</h3>
+                <p className="text-gray-600 mb-4">{track.description}</p>
+                <motion.button
+                  className="px-6 py-2 bg-orange-500 text-white font-semibold rounded-full hover:bg-orange-600 transition-colors duration-300"
+                  whileHover={buttonHover}
+                >
+                  EXPLORE
+                </motion.button>
+              </motion.div>
+            ))}
+          </div>
+          <div className="flex justify-center mt-8 gap-4">
+            <motion.button
+              className="px-6 py-3 bg-orange-500 text-white font-semibold rounded-full hover:bg-orange-600 transition-colors duration-300"
+              whileHover={buttonHover}
+            >
+              START YOUR FREE TRIAL
+            </motion.button>
+            <motion.button
+              className="px-6 py-3 bg-white text-orange-500 font-semibold border border-orange-500 rounded-full hover:bg-orange-500 hover:text-white transition-colors duration-300"
+              whileHover={buttonHover}
+            >
+              EXPLORE MORE COURSES
+            </motion.button>
+          </div>
         </div>
+      </section>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          <FaqItem
-            letter="A"
-            question="Is the course absolutely Free?"
-            answer="We think, quality education should be provided free. We upload quality materials for students who are passionate to learn new things. However, we have special meetup workshops going on, which will driven us in providing great content."
-          />
-          
-          <FaqItem
-            letter="B"
-            question="Can i download the Video Materials?"
-            answer="Yes, ofcourse! We love sharing. Our material is brought to you free and anyone can learn/distribute the materials. We glad to receive reviews of our courses."
-          />
-          
-          <FaqItem
-            letter="C"
-            question="What Languages in these courses?"
-            answer="We currently, decided to teach technology in Tamil, Telugu first. However, we can expect courses in Malayalam, Kannada & Hindi Languages as well."
-          />
-          
-          <FaqItem
-            letter="D"
-            question="Available for Meetup Workshop?"
-            answer="Yes, We love to teach students and help them innovating their ideas and guiding them reach high goals. We love to do that, "
-            contactLink="contact us anytime"
-          />
+      {/* FAQ SECTION */}
+      <section className="py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Frequently Asked Questions
+            </h2>
+            <div className="w-24 h-1 bg-orange-500 mx-auto"></div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12">
+            <FaqItem
+              letter="A"
+              question="Is the course absolutely Free?"
+              answer="We think, quality education should be provided free. We upload quality materials for students who are passionate to learn new things. However, we have special meetup workshops going on, which will driven us in providing great content."
+            />
+            <FaqItem
+              letter="B"
+              question="Can i download the Video Materials?"
+              answer="Yes, ofcourse! We love sharing. Our material is brought to you free and anyone can learn/distribute the materials. We glad to receive reviews of our courses."
+            />
+            <FaqItem
+              letter="C"
+              question="What Languages in these courses?"
+              answer="We currently, decided to teach technology in Tamil, Telugu first. However, we can expect courses in Malayalam, Kannada & Hindi Languages as well."
+            />
+            <FaqItem
+              letter="D"
+              question="Available for Meetup Workshop?"
+              answer="Yes, We love to teach students and help them innovating their ideas and guiding them reach high goals. We love to do that, "
+              contactLink="contact us anytime"
+            />
+          </div>
         </div>
-      </div>
-    </section>
-
-
-    </>
+      </section>
+    </div>
   );
 }
 
 export default Training;
-
