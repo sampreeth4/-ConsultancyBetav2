@@ -1,10 +1,36 @@
 import React from 'react';
 import { MapPin, Phone, Mail, Facebook, Twitter, Instagram, Globe } from 'lucide-react';
+import Swal from 'sweetalert2'
 
 const Contact = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "69e7d3f5-f0a4-4612-8111-3214c578d615");
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: json
+    }).then((res) => res.json());
+
+    if (res.success) {
+      Swal.fire({
+        title: "Success!",
+        text: "Message sent successfully!",
+        icon: "success"
+      });
+    }
   };
+
 
   return (
     <div className="w-full relative  bg-orange-100  md:p-16">
@@ -14,7 +40,7 @@ const Contact = () => {
             <span className="text-orange-500 font-semibold text-sm uppercase tracking-wider">Contact Us</span>
           </div>
           
-          <form onSubmit={handleSubmit} className="space-y-6 backdrop-blur-sm bg-white/50 p-8 rounded-2xl shadow-lg">
+          <form onSubmit={onSubmit} className="space-y-6 backdrop-blur-sm bg-white/50 p-8 rounded-2xl shadow-lg">
             <div className="space-y-5">
               <div>
                 <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
@@ -22,6 +48,7 @@ const Contact = () => {
                 </label>
                 <input
                   id="name"
+                  name='name'
                   type="text"
                   placeholder="Your name"
                   className="w-full px-4 py-3 border-2 border-orange-200 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition-all duration-300 bg-white/70"
@@ -34,6 +61,7 @@ const Contact = () => {
                   Email
                 </label>
                 <input
+                  name='email'
                   id="email"
                   type="email"
                   placeholder="your.email@example.com"
@@ -48,6 +76,7 @@ const Contact = () => {
                 </label>
                 <input
                   id="subject"
+                  name='subject'
                   type="text"
                   placeholder="How can we help?"
                   className="w-full px-4 py-3 border-2 border-orange-200 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition-all duration-300 bg-white/70"
@@ -61,6 +90,7 @@ const Contact = () => {
                 </label>
                 <textarea
                   id="message"
+                  name='message'
                   rows={4}
                   placeholder="Your message..."
                   className="w-full px-4 py-3 border-2 border-orange-200 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition-all duration-300 bg-white/70"
