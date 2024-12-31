@@ -1,5 +1,3 @@
-'use client'
-
 import { motion } from 'framer-motion'
 import { Server, Code2, Shield, ArrowRight } from 'lucide-react'
 import tech from '../assets/tech.webp'
@@ -42,10 +40,10 @@ const Services = () => {
   ]
 
   return (
-    <div className="min-h-screen bg-orange-50">
+    <div className="min-h-screen bg-orange-50 w-screen overflow-x-hidden">
       {/* Hero Section */}
       <motion.section 
-        className="py-20 text-center"
+        className="py-20 text-center px-0"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -57,7 +55,7 @@ const Services = () => {
           Cutting-Edge Tech Services
         </motion.h1>
         <motion.p 
-          className="text-2xl text-gray-700 mb-8 max-w-2xl mx-auto"
+          className="text-2xl text-gray-700 mb-8 max-w-3xl mx-auto px-4"
           {...fadeInUp}
           transition={{ delay: 0.2 }}
         >
@@ -78,40 +76,31 @@ const Services = () => {
       </motion.section>
 
       {/* Stats Section */}
-      <motion.section 
-        className="py-16"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              className="bg-white p-8 shadow-lg text-center m-2"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
-              whileHover={{ y: -5 }}
-            >
-              <stat.icon className="w-12 h-12 text-orange-500 mx-auto mb-4" />
-              <h3 className="text-4xl font-bold text-gray-800 mb-2">{stat.number}</h3>
-              <p className="text-gray-600">{stat.label}</p>
-            </motion.div>
-          ))}
+      <motion.section className="py-16">
+        <div className="px-0">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                className="bg-white p-8 shadow-lg text-center m-2"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+                whileHover={{ y: -5 }}
+              >
+                <stat.icon className="w-12 h-12 text-orange-500 mx-auto mb-4" />
+                <h3 className="text-4xl font-bold text-gray-800 mb-2">{stat.number}</h3>
+                <p className="text-gray-600">{stat.label}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </motion.section>
 
       {/* Service Benefits Section */}
-      <motion.section 
-        className="py-16 bg-white pl-4"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-      >
-        <div>
+      <motion.section className="py-16 bg-white">
+        <div className="px-0">
           <motion.h2 
             className="text-4xl font-bold text-gray-800 mb-8"
             {...fadeInUp}
@@ -163,13 +152,8 @@ const Services = () => {
       </motion.section>
 
       {/* Services Offered Section */}
-      <motion.section 
-        className="py-16"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-      >
-        <div>
+      <motion.section className="py-16">
+        <div className="px-0">
           <motion.h2 
             className="text-4xl font-bold text-gray-800 text-center mb-12"
             {...fadeInUp}
@@ -212,6 +196,4 @@ const Services = () => {
 }
 
 export default Services
-
-
 
