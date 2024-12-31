@@ -75,16 +75,16 @@ const tracks = [
       "Learn to create almost everything in technology and become an Fullstacker.",
   },
   {
-    duration: "14 hours",
-    title: "Learn Interface Design",
+    duration: "24 hours",
+    title: "AWS Services",
     description:
-      "Learn to build awesome user interfaces using Sketch & Adobe XD softwares.",
+      "Master AWS Services to build, scale, and secure cloud solutions like a pro!",
   },
   {
-    duration: "22 hours",
-    title: "Deploying Rails Apps",
+    duration: "24 hours",
+    title: "ISTQB Fundamentals",
     description:
-      "With Ruby on Rails, we can create great web applications on the go!",
+      "Master ISTQB Fundamentals and kickstart your journey to software testing excellence!",
   },
   {
     duration: "26 hours",
@@ -93,16 +93,16 @@ const tracks = [
       "Learn to create next generation android apps using this mobile applications course.",
   },
   {
-    duration: "6 hours",
-    title: "WordPress Development",
+    duration: "24 hours",
+    title: "Microsoft Azure Fundamentals",
     description:
-      "Create stunning websites in 6 hours using the Wordpress platform.",
+      "Master Microsoft Azure and build scalable, secure cloud solutions effortlessly!",
   },
   {
-    duration: "16 hours",
-    title: "Full Stack JavaScript",
+    duration: "50 hours",
+    title: "Data Science with Python",
     description:
-      "Learn to create interactive websites and web applications using Core JavaScript.",
+      "Master Data Science with Python and transform data into actionable insights!",
   },
 ];
 
