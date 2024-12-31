@@ -21,9 +21,27 @@ const Navbar = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-3xl font-bold text-orange-600 tracking-tight select-none"
+          className="flex flex-col items-start relative"
         >
-          <Link to={"/"}> Smartline Systems</Link>
+          <Link to="/" className="text-3xl font-bold text-orange-600 tracking-tight select-none">
+            Smartline Systems
+          </Link>
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: "100%" }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+            className="absolute bottom-0 left-0 flex justify-end"
+          >
+            <div className="h-1 bg-red-500 w-full relative">
+              <div className="absolute right-[-6px] top-[-2.5px]">
+                <div 
+                  className="w-0 h-0 
+                  border-l-[6px] border-l-red-500
+                  border-y-[3px] border-y-transparent"
+                />
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
 
         <div className="md:hidden">
@@ -74,7 +92,7 @@ const Navbar = () => {
             shadow-md 
             hover:shadow-lg"
           >
-            Log in{" "}
+            Log in
           </a>
         </motion.div>
 

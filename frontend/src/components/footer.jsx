@@ -8,6 +8,7 @@ import {
   FaPhoneAlt,
   FaEnvelope,
 } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   return (
@@ -16,9 +17,28 @@ const Footer = () => {
 
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
         <div className="space-y-5">
-          <h3 className="text-3xl font-bold tracking-tight text-orange-600 border-b-4 border-orange-500 pb-2 inline-block transition-colors duration-300">
-            Smartline Systems
-          </h3>
+          <div className="relative inline-block">
+            <h3 className="text-3xl font-bold tracking-tight text-orange-600 pb-2">
+              Smartline Systems
+            </h3>
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: "100%" }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+              className="absolute bottom-0 left-0 flex justify-end"
+            >
+              <div className="h-1 bg-red-500 w-full relative">
+                <div className="absolute right-[-6px] top-[-2.5px]">
+                  <div 
+                    className="w-0 h-0 
+                    border-l-[6px] border-l-red-500
+                    border-y-[3px] border-y-transparent"
+                  />
+                </div>
+              </div>
+            </motion.div>
+          </div>
+          
           <p className="text-gray-600 font-medium leading-relaxed">
             Transforming businesses through innovative consulting and strategic
             solutions.
@@ -49,7 +69,7 @@ const Footer = () => {
           </h4>
           <div className="space-y-3">
             {[
-              { icon: FaMapMarkerAlt, text: "Potheri, SRM AC 1" },
+              { icon: FaMapMarkerAlt, text: "Reg office:10 A  Tamil nagar ,  2nd Street  M.C Road  Chennai , Tamil Nadu , India 613004" },
               { icon: FaPhoneAlt, text: "+1 (555) 123-4567" },
               { icon: FaEnvelope, text: "info@smartlinesystems.com" },
             ].map((contact, index) => (

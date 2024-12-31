@@ -119,9 +119,9 @@ const Contact = () => {
               <div className="flex items-start space-x-4">
                 <MapPin className="w-6 h-6 text-orange-500 mt-1 flex-shrink-0" />
                 <div>
-                  <p className="text-gray-700 font-medium">123 Potheri</p>
-                  <p className="text-gray-700 font-medium">Chennai</p>
-                  <p className="text-gray-700 font-medium">India</p>
+                  <p className="text-gray-700 font-medium">Reg office:10 A  Tamil nagar</p>
+                  <p className="text-gray-700 font-medium">2nd Street  M.C Road  Chennai </p>
+                  <p className="text-gray-700 font-medium">Tamil Nadu , India 613004</p>
                 </div>
               </div>
               <div className="flex items-center space-x-4">
