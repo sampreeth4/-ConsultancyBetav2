@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAppContext } from "../contexts/AppContext";
+import { useMutation, useQueryClient } from "react-query";
+import * as apiClient from "../api/Api-Client";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const { isLoggedIn } = useAppContext();
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
   const navItems = [
     { name: "About Us", href: "/about" },
     { name: "Services", href: "/services" },
@@ -13,6 +18,17 @@ const Navbar = () => {
     { name: "Careers", href: "/careers" },
     { name: "Contact", href: "/contact" },
   ];
+
+  const signOutMutation = useMutation(apiClient.signOut, {
+    onSuccess: async () => {
+      await queryClient.invalidateQueries("validateToken");
+      navigate("/");
+    },
+  });
+
+  const handleSignOut = useCallback(() => {
+    signOutMutation.mutate();
+  }, [signOutMutation]);
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
@@ -23,7 +39,10 @@ const Navbar = () => {
           transition={{ duration: 0.8 }}
           className="flex flex-col items-start relative"
         >
-          <Link to="/" className="text-3xl font-bold text-orange-600 tracking-tight select-none">
+          <Link
+            to="/"
+            className="text-3xl font-bold text-orange-600 tracking-tight select-none"
+          >
             Smartline Systems
           </Link>
           <motion.div
@@ -34,7 +53,7 @@ const Navbar = () => {
           >
             <div className="h-1 bg-red-500 w-full relative">
               <div className="absolute right-[-6px] top-[-2.5px]">
-                <div 
+                <div
                   className="w-0 h-0 
                   border-l-[6px] border-l-red-500
                   border-y-[3px] border-y-transparent"
@@ -82,18 +101,33 @@ const Navbar = () => {
             </Link>
           ))}
 
-          <a
-            href="login"
-            className="bg-orange-500 text-white px-4 py-2 
+          {isLoggedIn ? (
+            <button
+              className="bg-gray-600 text-white px-4 py-2 
             rounded-lg 
             hover:bg-orange-600 
             transition-colors 
             duration-300 
             shadow-md 
             hover:shadow-lg"
-          >
-            Log in
-          </a>
+              onClick={() => handleSignOut()}
+            >
+              Logout
+            </button>
+          ) : (
+            <a
+              href="login"
+              className="bg-orange-500 text-white px-4 py-2 
+            rounded-lg 
+            hover:bg-orange-600 
+            transition-colors 
+            duration-300 
+            shadow-md 
+            hover:shadow-lg"
+            >
+              Log in
+            </a>
+          )}
         </motion.div>
 
         {isOpen && (
@@ -116,17 +150,30 @@ const Navbar = () => {
                   {item.name}
                 </a>
               ))}
-              <a
-                href="login"
-                className="bg-orange-500 text-white px-4 py-2 
+              {isLoggedIn ? (
+                <button
+                  className="bg-gray-600 text-white px-4 py-2 
                 rounded-lg 
                 text-center 
                 hover:bg-orange-600 
                 transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                Log in
-              </a>
+                  onClick={() => setIsOpen(false)}
+                >
+                  Logout
+                </button>
+              ) : (
+                <a
+                  href="login"
+                  className="bg-orange-500 text-white px-4 py-2 
+                rounded-lg 
+                text-center 
+                hover:bg-orange-600 
+                transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Log in
+                </a>
+              )}
             </div>
           </motion.div>
         )}

@@ -1,18 +1,37 @@
 const express = require("express");
+const cookieParser = require("cookie-parser");
+const mongoose = require("mongoose");
 const cors = require("cors");
-const connection = require("./db");
-const userRoutes = require("./routes/users");
-const authRoutes = require("./routes/auth");
+require("dotenv").config();
 
 const app = express();
+const PORT = process.env.PORT || 9000;
 
-connection();
+app.use(cookieParser());
 
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+  })
+);
 app.use(express.json());
-app.use(cors());
 
-app.use("/api/users", userRoutes);
+mongoose
+  .connect(process.env.MONGODB_CONNECTION_STRING)
+  .then(() => {
+    console.log("MongoDB connected successfully");
+  })
+  .catch((err) => {
+    console.error("MongoDB connection error:", err);
+  });
+
+const authRoutes = require("./routes/auth");
+const userRoutes = require("./routes/users");
+
 app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
 
-const port = process.env.PORT || 8080;
-app.listen(port, () => console.log(`Listening on port ${port}...`));
+app.listen(PORT, () => {
+  console.log(`server running on localhost:${PORT}`);
+});

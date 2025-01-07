@@ -1,29 +1,20 @@
-const mongoose = require('mongoose');
-const jwt = require('jsonwebtoken');
-const joi = require('joi');
-const passwordComplexity = require("joi-password-complexity");
+const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
 
 const userSchema = new mongoose.Schema({
-    fullName: {type: String, required: true},
-    email: {type: String, required: true},
-    password: {type: String, required:true},
+    email: { type: String, required: true, unique: true },
+    password: { type: String,required: false},
+    Name: { type: String, required: false },
 });
 
-userSchema.methods.generateAuthToken = function() {
-    const token = jwt.sign({_id: this._id}, process.env.JWTPRIVATEKEY, {expiresIn: "7d"})
-    return token
-};
+// Middleware to hash the password before saving
+userSchema.pre("save", async function (next) {
+    if (this.isModified('password')) {
+        this.password = await bcrypt.hash(this.password, 8);
+    }
+    next();
+});
 
-const User = mongoose.model("user", userSchema);
+const User = mongoose.model("User ", userSchema);
 
-const validate = (data)=>{
-    const schema = joi.object({
-        fullName: joi.string().required().label("Full Name"),
-        email: joi.string().required().label("Email"),
-        password: passwordComplexity().required().label("Password"),
-    });
-    return schema.validate(data)
-};
-
-module.exports = {User, validate};
-
+module.exports = User;

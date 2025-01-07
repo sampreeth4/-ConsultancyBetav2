@@ -1,25 +1,20 @@
-const { User,validate } = require("../models/user");
-const router = require("express").Router();
-const bcrypt = require("bcrypt");
+const express = require("express");
+const { check} = require("express-validator");
+const MyUserController = require("../controllers/MyUserController");
+const router = express.Router();
 
-router.post("/",  async(req,res) => {
-    try{
-        const {error} = validate(req.body);
-        if(error)
-            return res.status(400).send({message: error.details[0].message});
-        
-        const user = await User.findOne({email: req.body.email});
-        if(user)
-            return res.status(409).send({message: "User with given email already exist!"});
-        const salt = await bcrypt.genSalt(Number(process.env.SALT));
-        const hashPassword = await bcrypt.hash(req.body.password, salt);
+// Register
+router.post(
+  "/register",
+  [
+    check("name", "Name is required").isString(),
+    check("email", "Email is required").isEmail(),
+    check("password", "Password with 6 or more characters required").isLength({
+      min: 6,
+    }),
+  ],
+  MyUserController.createCurrentUser
+);
 
-        await new User({...req.body, password: hashPassword}).save();
-        res.status(201).send({message: "User created successfully"});
-    }
-    catch(error){
-        res.status(500).send({message: "Internal Server Error"});
-    }
-});
 
 module.exports = router;
