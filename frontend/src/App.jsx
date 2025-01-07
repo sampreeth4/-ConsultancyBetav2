@@ -11,6 +11,8 @@ import AboutUs from "./pages/AboutUs";
 import LoginPage from "./pages/LoginPage";
 import ServicesPage from "./pages/ServicesPage";
 import Training from "./pages/Training";
+import SignUpPage from './pages/SignupPage';
+
 const App = () => {
 
   return (
@@ -23,6 +25,7 @@ const App = () => {
       <Route path="/services" element={<Layout><ServicesPage /> </Layout>}/>
       <Route path="/login" element={<LoginPage />}></Route>
       <Route path="/training" element={<Layout><Training/></Layout>}></Route>
+      <Route path="/signup" element={<SignUpPage />} />
     </Routes>
   </Router>
   );
