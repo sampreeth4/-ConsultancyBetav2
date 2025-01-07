@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff, Mail, Lock } from 'lucide-react';
 import Navbar from '../components/Nav';
+import { Link } from 'react-router-dom';
+
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
@@ -93,9 +95,12 @@ const LoginPage = () => {
             <div className="text-center">
               <span className="text-gray-500 text-sm">
                 Don't have an account?{' '}
-                <button type="button" className="text-orange-600 hover:text-orange-500 font-medium transition-colors duration-200">
+                <Link 
+                  to="/signup" 
+                  className="text-orange-600 hover:text-orange-500 font-medium transition-colors duration-200"
+                >
                   Sign up
-                </button>
+                </Link>
               </span>
             </div>
           </form>
